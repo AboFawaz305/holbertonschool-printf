@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (write(1, "\n", 1));
-	while (format[i])h
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 					count += print_char(ap);
 					break;
 				case '%':
-					count += write(1, &'%', 1);
+					count += write(1, "%", 1);
 					break;
 				default:
 					count += write(1, format + i, 2);
@@ -58,7 +58,7 @@ int _printf(const char *format, ...)
  */
 int print_string(va_list ap)
 {
-	char *s = va_arg(char *);
+	char *s = va_arg(ap, char *);
 
 	return (write(1, s, _strlen(s)));
 }
@@ -84,6 +84,7 @@ int _strlen(char *s)
  */
 int print_char(va_list ap)
 {
-	return (write(1, &((char) va_arg(int)), 1));
+	char c = (char) va_arg(ap, int);
+	return (write(1, &c, 1));
 }
 
