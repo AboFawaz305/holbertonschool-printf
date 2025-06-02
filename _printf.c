@@ -24,7 +24,6 @@ int _printf(const char *format, ...)
 		{
 			switch (format[i + 1])
 			{
-
 				case 's':
 					count += print_string(ap);
 					break;
