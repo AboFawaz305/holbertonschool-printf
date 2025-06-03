@@ -57,6 +57,11 @@ int __printf_helper(const char *format, va_list ap)
 				case '%':
 					count += write(1, "%", 1);
 					break;
+				case 'd':
+				case 'i':
+					count += print_int(ap);
+					break;
+
 				default:
 					count += write(1, format + i, 2);
 					break;
@@ -72,3 +77,4 @@ int __printf_helper(const char *format, va_list ap)
 
 	return (count);
 }
+

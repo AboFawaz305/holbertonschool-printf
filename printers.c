@@ -45,3 +45,41 @@ int print_char(va_list ap)
 	return (write(1, &c, 1));
 }
 
+/**
+ * print_int - print an integer from ap
+ * @ap: the arguemnt list
+ *
+ * Retrun: the number of printed characters
+ */
+int print_int(va_list ap)
+{
+	int n = va_arg(ap, int);
+	char buffer[12];
+	int i = 0, c = n, x = 0, j = 0, size = 0;
+
+	do {
+		x = c % 10;
+		if (x < 0)
+			x *= -1;
+		buffer[i] = x + '0';
+		c /= 10;
+		i++;
+	} while (c != 0);
+
+	if (n < 0)
+		buffer[i++] = '-';
+
+	size = i;
+
+	while (j < i)
+	{
+		int temp = buffer[j];
+
+		buffer[j] = buffer[i - 1];
+		buffer[i - 1] = temp;
+		i--;
+		j++;
+	}
+
+	return (write(1, buffer, size));
+}
