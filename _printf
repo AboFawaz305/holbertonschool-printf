@@ -1,0 +1,54 @@
+.TH man 3 "Jun 2025" "1.0" "_printf man page"
+
+.SH NAME
+printf - writes the formatted output after subsituting the arguments
+
+.SH SYNOPSYS
+#include "main.h"
+
+int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+Wtite the formatted string after substituting each specifier with its
+corresponding argument. Currently the supported specifiers are: %s to substitute
+a string, %c to substitute a single character, %d and %i to substitute a single
+integer, and %% to subsitute with a percent sign '%'.
+
+.SH RETURN VALUE
+returns the number of printed characters on success, otherwise it returns -1 on
+error see ERRORS section for more details.
+
+.SH ERRORS
+the function returns a -1 in any of the following cases: the format string is
+NULL, or the format string contains a single percent at the end.
+
+.SH EXAMPLES
+to print a string, a character and a an integer:
+
+#include <stdio.h>
+
+
+#include "main.h"
+
+int main(void)
+
+{
+
+	char str[] = "Hello World!";
+
+	char c = 'X';
+
+	int x = 123, len;
+
+
+
+	len = _printf("%s %c %d\\n", str, c, x);
+
+
+	printf("Output length: %d\\n", len);
+
+
+
+	return (0);
+
+}
