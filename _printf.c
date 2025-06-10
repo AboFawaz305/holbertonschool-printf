@@ -61,6 +61,21 @@ int __printf_helper(const char *format, va_list ap)
 				case 'i':
 					count += print_int(ap);
 					break;
+				case 'b':
+					count += print_binary(ap);
+					break;
+				case 'X':
+					count += print_hex(ap);
+					break;
+				case 'x':
+					count += print_hex_small(ap);
+					break;
+				case 'u':
+					count +=  print_unsigned(ap);
+					break;
+				case 'o':
+					count +=  print_octal(ap);
+					break;
 
 				default:
 					count += write(1, format + i, 2);

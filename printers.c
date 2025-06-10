@@ -83,3 +83,35 @@ int print_int(va_list ap)
 
 	return (write(1, buffer, size));
 }
+
+/**
+ * print_unsigned - print an unsigned integer from ap
+ * @ap: the arguemnt list
+ *
+ * Retrun: the number of printed characters
+ */
+int print_unsigned(va_list ap)
+{
+	unsigned int n = va_arg(ap ,unsigned int);
+	char buffer[12];
+	unsigned int x = 0, c = n, size = 0 , j = 0, i = 0;
+
+	do{
+		x = c % 10;
+		buffer[i] = x + '0';
+		c = c / 10;
+		i++;
+	} while(c != 0);
+
+	size = i;
+
+	while (j < i)
+	{
+		unsigned int temp = buffer[j];
+		buffer[j] = buffer[i - 1];
+		buffer[i - 1] = temp;
+		i--;
+		j++;
+	}
+	return (write(1,buffer,size));
+}
