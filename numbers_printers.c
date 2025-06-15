@@ -69,7 +69,7 @@ int print_binary(va_list ap)
 	}
 
 	j = 0;
-	while (j < size && bffer[j] == '0')
+	while (j < size && buffer[j] == '0')
 		j++;
 
 	if (j == size)
