@@ -68,14 +68,7 @@ int print_binary(va_list ap)
 		j++;
 	}
 
-	j = 0;
-	while (j < size && buffer[j] == '0')
-		j++;
-
-	if (j == size)
-		return write(1, "0", 1);
-
-	return (write(1, buffer + 1 , size - 1));
+	return (write(1, buffer, size));
 }
 
 /**
