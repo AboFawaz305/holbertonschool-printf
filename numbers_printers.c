@@ -45,9 +45,9 @@ int print_octal(va_list ap)
  */
 int print_binary(va_list ap)
 {
-	unsigned int n = va_arg(ap, unsigned int);
+	unsigned long int n = va_arg(ap, unsigned long int);
 	char buffer[12];
-	unsigned int x = 0, c = n, j = 0, size = 0, i = 0;
+	unsigned long int x = 0, c = n, j = 0, size = 0, i = 0;
 
 	do {
 		x = c % 2;
@@ -60,7 +60,7 @@ int print_binary(va_list ap)
 
 	while (j < i)
 	{
-		unsigned int temp = buffer[j];
+		unsigned long int temp = buffer[j];
 
 		buffer[j] = buffer[i - 1];
 		buffer[i - 1] = temp;
